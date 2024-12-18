@@ -27,3 +27,5 @@ def es_for(request):
         'my_dict': {'chiave1': 'Valore 1', 'chiave2': 'Valore 2'}  
     }
     return render(request, "es_for.html", context)
+def index2(request):
+    return render(request, "index2.html")

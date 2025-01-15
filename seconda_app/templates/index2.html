@@ -1,14 +1,7 @@
-<!DOCTYPE html>
-<html lang="it">
-<head>
-    <meta charset="UTF-8">
-    <title>Index seconda app</title>
-</head>
-<body>
-    <ol>
-        <li><a href="{% url 'seconda_app:es_for'%}">Pagina es for</a></li>
-        <li><a href="{% url 'seconda_app:es_if'%}">Pagina es if</a></li>
-        <li><a href="{% url 'seconda_app:if_else_elif'%}">Pagina if else ed elif</a></li>        
-    </ol>
-</body>
-</html>
+{% extends "base.html"%}
+
+{%block title%} {{block.super}} | Index seconda app {%endblock title%}
+
+{%block content%}
+
+{%endblock content%}

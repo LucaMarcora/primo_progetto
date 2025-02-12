@@ -1,0 +1,13 @@
+{% extends 'base.html'%}
+
+{%block title%} {{block.super}} | View F {%endblock title%}
+
+{%block content%}
+<h4> Corsi Statistiche Avanzate </h4>
+{% for corso in corsi %}
+    <p><strong>Corso con più posti disponibili:  </strong>{{ corso.titolo }}</p>
+    <p><strong>Corso con il minor numero di posti disponibili: </strong>{{ corso.titolo }}</p>
+    <p><strong>Numero totale di posti disponibili per tutti i corsi: </strong>{{ corso.posti_disponibili }}</p>
+    <hr>
+{% endfor %}
+{%endblock content%}

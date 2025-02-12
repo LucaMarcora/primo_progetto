@@ -1,0 +1,14 @@
+{% extends 'base.html'%}
+
+{%block title%} {{block.super}} | View B {%endblock title%}
+
+{%block content%}
+{% for corso in corsi %}
+    <p><strong>Titolo: </strong>{{ corso.titolo }}</p>
+    <p><strong>Descrizione: </strong>{{ corso.descrizione }}</p>
+    <p><strong>Data di inizio: </strong>{{ corso.data_inizio }}</p>
+    <p><strong>Data di fine: </strong>{{ corso.data_fine }}</p>
+    <p><strong>Posti disponibili: </strong>{{ corso.posti_disponibili }}</p>
+    <hr>
+{% endfor %}
+{%endblock content%}

@@ -14,49 +14,74 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
   </head>
   <body>
-    
-    
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Primo progetto</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <a class="navbar-brand" href="#">Primo progetto</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Prima app
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="{% url 'prima_app:homepage'%}">Homepage</a>
+                  <a class="dropdown-item" href="{% url 'prima_app:welcome'%}">Welcome</a>
+                  <a class="dropdown-item" href="{% url 'prima_app:lista'%}">Lista</a>
+                  <a class="dropdown-item" href="{% url 'prima_app:chi_siamo'%}">Chi siamo</a>
+                  <a class="dropdown-item" href="{% url 'prima_app:variabili'%}">Variabili</a>                
+                </div>
+              </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Prima app
+                Seconda app
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="{% url 'prima_app:homepage'%}">Homepage</a>
-                <a class="dropdown-item" href="{% url 'prima_app:welcome'%}">Welcome</a>
-                <a class="dropdown-item" href="{% url 'prima_app:lista'%}">Lista</a>
-                <a class="dropdown-item" href="{% url 'prima_app:chi_siamo'%}">Chi siamo</a>
-                <a class="dropdown-item" href="{% url 'prima_app:variabili'%}">Variabili</a>                
+                <a class="dropdown-item" href="{% url 'seconda_app:es_for'%}">Pagina es for</a>
+                <a class="dropdown-item" href="{% url 'seconda_app:es_if'%}">Pagina es if</a>
+                <a class="dropdown-item" href="{% url 'seconda_app:if_else_elif'%}">Pagina if else ed</a>        
               </div>
             </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Seconda app
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="{% url 'seconda_app:es_for'%}">Pagina es for</a>
-              <a class="dropdown-item" href="{% url 'seconda_app:es_if'%}">Pagina es if</a>
-              <a class="dropdown-item" href="{% url 'seconda_app:if_else_elif'%}">Pagina if else ed</a>        
-            </div>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Corsi formazione
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="{% url 'corsi_formazione:index_corsi'%}">Index Corsi Formazione</a>    
-            </div>
-          </li>
-    </nav>
-    <div class="container my-4">
-
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Corsi formazione
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{% url 'corsi_formazione:index_corsi'%}">Index Corsi Formazione</a>    
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                App News
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{% url 'news:index_news'%}">Index App News</a>    
+              </div>
+            </li>
+            
+            {% if request.user.is_authenticated %}
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{ request.user.username }}
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <div class="dropdown-divider"></div>
+                <form id="logout-form" action="{% url 'logout' %}" method="post">
+                  {% csrf_token %}
+                  <button class="btn ft-power" type="submit"> Logout</button>
+                </form>
+              </div>
+            </li>
+          {% else %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'login' %}">Login</a>
+            </li>
+          {% endif %}
+          
+      </nav>
+      <div class="container my-4">
       {%block content%}
       {%endblock content%}
 

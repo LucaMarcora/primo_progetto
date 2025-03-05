@@ -1,0 +1,11 @@
+{% extends "base.html"%}
+
+{%block title%} {{block.super}} | Index Corsi {%endblock title%}
+
+{%block content%}
+    <h1>Benvenuto nel sistema di gestione dei Corsi di Formazione</h1>
+    <ul>
+        <li><a href="{% url 'news:lista_articoli'%}">Lista degli articoli</a></li>
+        <li><a href="{% url 'news:homeview'%}">Home dell'app News</a></li>
+    </ul>
+{%endblock content%}

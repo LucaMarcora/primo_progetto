@@ -27,6 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
 
 # Application definition
 
@@ -41,6 +43,9 @@ INSTALLED_APPS = [
     'seconda_app',
     'news',
     'corsi_formazione',
+    'forms_app',
+    'crispy_forms',
+    'crispy_bootstrap4',
 ]
 
 MIDDLEWARE = [
@@ -62,6 +67,7 @@ TEMPLATES = [
                   os.path.join(BASE_DIR, 'seconda_app/templates'),
                   os.path.join(BASE_DIR, 'news/templates'),
                   os.path.join(BASE_DIR, 'corsi_formazione/templates'),
+                   os.path.join(BASE_DIR, 'forms_app/templates'),
                   os.path.join(BASE_DIR, 'templates'),
                   ],
         'APP_DIRS': True,
